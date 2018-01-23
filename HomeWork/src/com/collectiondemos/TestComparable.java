@@ -29,17 +29,6 @@ public class TestComparable {
 		for (CarComparable carComparable : carList) {
 			System.out.println(carComparable.toString());
 		}
-		/*System.out.println("Sort using Arrays.sort");
-		 *Arrays.sort(cars);
-		for (CarComparable carComparable : cars) {
-			System.out.println(carComparable.toString());
-		}
-		System.out.println("---------------");
-		System.out.println("Sort using Comparator");
-		Arrays.sort(cars,new ColorComparator());
-		for (CarComparable carComparable : cars) {
-			System.out.println(carComparable.toString());
-		}*/
 
 	}
 
