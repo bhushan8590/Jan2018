@@ -9,21 +9,11 @@ public class Test {
 	public static void main(String[] args) {
 		List<Customer> custList = new ArrayList<Customer>();
 		int choice;
-		// ExecuteTransaction et = new ExecuteTransaction();
 		int processAmt = 0;
 		for (int i = 0; i <= 10; i++) {
 			Customer c = new Customer(1000 + i, "c" + i);
 			custList.add(c);
 		}
-		/*System.out.println("Time before loop:" + System.currentTimeMillis());
-		for (Customer customer : custList) {
-			processAmt += 10;
-			// et.processPayment(customer, processAmt);
-			ExecuteTransaction et = new ExecuteTransaction();
-			et.setCustomer(customer, processAmt);
-			et.start();
-		}
-		System.out.println("Time After loop:" + System.currentTimeMillis());*/
 		do {
 			System.out.println("Choose option");
 			System.out.println("1.Without Thread");
@@ -38,7 +28,6 @@ public class Test {
 					ExecuteTransaction et = new ExecuteTransaction();
 					for (Customer customer : custList) {
 						processAmt += 10;
-						//et.processPayment(customer, processAmt);
 						et.processTransaction(customer, processAmt);
 					}
 					System.out.println("Time After loop:" + System.currentTimeMillis());

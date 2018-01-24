@@ -25,7 +25,6 @@ public class ExecuteTransaction extends Thread {
 	
 	public void processTransaction(Customer cust, int amt){
 		cust.setBalance(cust.getBalance() - amt);
-		//System.out.println("processTransaction");
 		System.out.println(cust.toString());
 	}
 	public void run() {
