@@ -16,10 +16,10 @@ public class TestCar {
 			carList.add(c);
 			carMap.put(c.getVinNo(), c);
 		}
-		System.out.println("Time before:"+System.currentTimeMillis()+" milisecond");
-		//TestCar.searchInList(carList, 999999);
-		TestCar.searchInMap(carMap, 999999);
+		System.out.println("Time before call:"+System.currentTimeMillis()+" milisecond");
 		TestCar.searchInList(carList, 999999);
+		System.out.println("Time before call:"+System.currentTimeMillis()+" milisecond");
+		TestCar.searchInMap(carMap, 999999);
 	}
 	
 	private static void searchInList(List<Car> carList, int no) {
@@ -32,10 +32,8 @@ public class TestCar {
 	}
 	
 	private static void searchInMap(Map<Integer, Car> carMap, int no) {
-		for(Map.Entry<Integer, Car> entry:carMap.entrySet()){
-			if(entry.getKey() == no){
-				System.out.println("Record found in Map:"+System.currentTimeMillis()+" milisecond");
-			}
+		if(carMap.get(no) != null){
+			System.out.println("Record found in Map:"+System.currentTimeMillis()+" milisecond");
 		}
 
 	}
