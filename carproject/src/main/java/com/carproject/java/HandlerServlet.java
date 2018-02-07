@@ -29,16 +29,11 @@ public class HandlerServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		PrintWriter out = response.getWriter();
 		List<Car> carList = new ArrayList<Car>();
-		//Car c = new Car();
 		String userName = request.getParameter("name");
 		String userPassword = request.getParameter("password");
-		out.print(userName);
-		out.print(userPassword);
 		if(ExecuteQuery.validateUser(userName, userPassword)){
 			 HttpSession session=request.getSession(); 
-			 /*session.setAttribute("user", userName);*/
 			try {
 				ResultSet rs = ExecuteQuery.query();
 				while (rs.next()) {
@@ -60,10 +55,8 @@ public class HandlerServlet extends HttpServlet {
 			session.setAttribute("clist", carList);
 			RequestDispatcher rd=request.getRequestDispatcher("welcome.jsp");
 			rd.forward(request, response);
-			//response.sendRedirect("welcome.jsp");
 		}else{
-			//PrintWriter out = null;
-			out.println("User name or password is incorrect please <a href='index.jsp'>try again</a>");
+			response.sendError(401, "User name or password is incorrect");
 		}
 	}
 
