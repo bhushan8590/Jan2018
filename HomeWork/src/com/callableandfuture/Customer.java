@@ -1,9 +1,9 @@
-package com.threaddemo;
+package com.callableandfuture;
 
 public class Customer {
 	int balance;
 	String name;
-	boolean flag=false;
+	boolean transactionFlag=false;
 	
 	public Customer() {
 		this.balance=0;
@@ -32,5 +32,5 @@ public class Customer {
 	public String toString() {
 		return "Customer [balance=" + balance + ", name=" + name + "]";
 	}
-	
+
 }

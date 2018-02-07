@@ -24,9 +24,23 @@ public class TestComparable {
 		carList.add(car1);
 		carList.add(car2);
 		carList.add(car3);
+		//Sorting Collection List (internally compairTo() method called)
 		System.out.println("Sort using Collections.sort");
 		Collections.sort(carList);
 		for (CarComparable carComparable : carList) {
+			System.out.println(carComparable.toString());
+		}
+		
+		//Sorting Array of object (internally compairTo() method called)
+		System.out.println("Sort using Arrays.sort");
+		 Arrays.sort(cars);
+		for (CarComparable carComparable : cars) {
+			System.out.println(carComparable.toString());
+		}
+		System.out.println("---------------");
+		System.out.println("Sort using Comparator");
+		Arrays.sort(cars,new ColorComparator());
+		for (CarComparable carComparable : cars) {
 			System.out.println(carComparable.toString());
 		}
 
