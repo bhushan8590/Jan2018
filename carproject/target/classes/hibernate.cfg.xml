@@ -29,8 +29,11 @@
       <property name="show_sql">true</property>
       
       <!-- List of XML mapping files -->
-      <mapping resource = "user.hbm.xml"/>
-      <mapping resource = "car.hbm.xml"/>
+      <mapping class="com.carproject.java.User"/>
+      <mapping class="com.carproject.java.Car"/>
+      <mapping class="com.carproject.java.Model"/>
+      <!-- <mapping resource = "user.hbm.xml"/>
+      <mapping resource = "car.hbm.xml"/> -->
       
    </session-factory>
 </hibernate-configuration>

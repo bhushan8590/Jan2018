@@ -1,6 +1,13 @@
 package com.carproject.java;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "model")
 public class Model {
+	@Id
 	int id;
 	String name;
 	String make;

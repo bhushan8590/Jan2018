@@ -29,6 +29,7 @@ public class DbService {
 			flag=true;
 		}
 		session.getTransaction().commit();
+		session.close();
 		return flag;
 	}
 	
@@ -38,6 +39,7 @@ public class DbService {
 		Criteria cr = session.createCriteria(Car.class);
 		List<Car> carlist = cr.list();
 		session.getTransaction().commit();
+		session.close();
 		return carlist;
 	}
 	
@@ -57,6 +59,7 @@ public class DbService {
 			System.out.println(e);
 		}finally{
 			session.getTransaction().commit();
+			session.close();
 		}
 		if(flag){
 			return flag;

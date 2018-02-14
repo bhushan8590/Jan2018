@@ -9,7 +9,6 @@
 <body>
 <jsp:useBean id="user" class="com.carproject.java.User" scope="session"></jsp:useBean>
 <h2>Welcome <jsp:getProperty name="user" property="name" /></h2>
-
 <table width="30" border="1">
 		<caption>
 			<em>Available cars</em>

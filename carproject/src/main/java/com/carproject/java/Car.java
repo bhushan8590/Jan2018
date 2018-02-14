@@ -1,11 +1,23 @@
 package com.carproject.java;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "car")
 public class Car {
+	@Id
 	int id;
+	@ManyToOne
+	@JoinColumn(name="model_id")
 	Model model_id;
+	String make_year;
 	String type;
 	String color;
-	String make_year;
+	
 	
 	public Car() {
 	
