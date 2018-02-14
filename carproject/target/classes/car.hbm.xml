@@ -1,0 +1,42 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name = "com.carproject.java.Car" table = "car">
+      
+      <meta attribute = "class-description">
+         This class contains the car detail. 
+      </meta>
+      
+      <id name = "id" type = "int" column = "id">
+         <generator class="assigned"/>
+      </id>
+      
+      <property name = "type" column = "type" type = "string"/>
+      <property name = "color" column = "color" type = "string"/>
+      <property name = "make_year" column = "make_year" type = "string"/>
+      <many-to-one name = "model_id" column = "model_id" 
+         class="com.carproject.java.Model" not-null="true"/>
+         
+   </class>
+
+   <class name = "com.carproject.java.Model" table="model">
+      
+      <meta attribute = "class-description">
+         This class contains the car model detail. 
+      </meta>
+      
+      <id name = "id" type = "int" column = "id">
+         <generator class="assigned"/>
+      </id>
+      
+      <property name = "name" column = "name" type = "string"/>
+      <property name = "make" column = "make" type = "string"/>
+      <property name = "price" column = "price" type = "int"/>
+
+      
+   </class>
+
+</hibernate-mapping>

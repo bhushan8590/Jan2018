@@ -5,8 +5,8 @@
 <title>Login Page</title>
 </head>
 <body>
-	<form method="post" action="login.jsp">
-	<input type="hidden" name="login" value="login_form">
+	<form method="post" action="HandlerServlet">
+	<input type="hidden" name="register" value="register_form">
 		<table>
 			<tr>
 				<td><label><b>Username</b></label></td>
@@ -19,8 +19,7 @@
 					name="password" required></td>
 			</tr>
 			<tr>
-			<td><input type="submit" value="Login"></td>
-			<td><a href="register.jsp">Register Here</a></td>
+			<td><input type="submit" value="Register"></td>
 			</tr>
 			
 		</table>

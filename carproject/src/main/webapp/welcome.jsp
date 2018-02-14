@@ -7,7 +7,8 @@
 <title>Welcome</title>
 </head>
 <body>
-<h2>Welcome <%User u = (User)session.getAttribute("user");%><%=u.getName()%></h2>
+<jsp:useBean id="user" class="com.carproject.java.User" scope="session"></jsp:useBean>
+<h2>Welcome <jsp:getProperty name="user" property="name" /></h2>
 
 <table width="30" border="1">
 		<caption>
@@ -20,19 +21,19 @@
 		    for(Car car: carList){
 		%>
 		<tr>
-			<td><%=car.getName()%></td>
-			<td><%=car.getMake()%></td>
+			<td><%=car.getModel_id().getName()%></td>
+			<td><%=car.getModel_id().getMake()%></td>
 			<td><%=car.getMake_year()%></td>
 			<td><%=car.getType()%></td>
 			<td><%=car.getColor()%></td>
-			<td><%=car.getPrice()%></td>
+			<td><%=car.getModel_id().getPrice()%></td>
 		</tr>
 		<%
 			}
 		%>
 	</table>
 	<br>
-	<table width="30" border="1">
+	<%-- <table width="30" border="1">
 		<caption>
 			<em>Available cars</em>
 			<label>Using Session</label>
@@ -53,7 +54,7 @@
 		<%
 			}
 		%>
-	</table>
+	</table> --%>
 <a href="B.jsp">Click to go B Jsp</a>
 </body>
 </html>

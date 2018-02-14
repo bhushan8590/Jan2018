@@ -7,7 +7,7 @@
 <title>B Jsp</title>
 </head>
 <body>
-<h2>Welcome to B jsp</h2>
+<%-- <h2>Welcome to B jsp</h2>
 
 <table width="30" border="1">
 		<caption>
@@ -29,7 +29,7 @@
 		</tr>
 		<%
 			}
-		%>
+		%> --%>
 	</table>
 	<br>
 	<%-- IT throws Internal server error i.e. HTTP status 500 and NullPointerException

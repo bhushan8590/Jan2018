@@ -14,49 +14,59 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+
 public class HandlerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-   
-    public HandlerServlet() {
-        super();
- 
-    }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public HandlerServlet() {
+		super();
+
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		
-		List<Car> carList = new ArrayList<Car>();
-		String userName = request.getParameter("name");
-		String userPassword = request.getParameter("password");
-		if(ExecuteQuery.validateUser(userName, userPassword)){
-			 HttpSession session=request.getSession(); 
+		HttpSession session = request.getSession();
+		User u = null;
+		
+		if ("login_form".equalsIgnoreCase(request.getParameter("login"))) {
+			List<Car> carList = new ArrayList<Car>();
+			u = (User) session.getAttribute("user");
+			String userName = u.getName();
+			String userPassword = u.getPassword();
+			if (DbService.validateUser(userName, userPassword)) {
+				List<Car> clist = null;
+				try {
+					clist = DbService.query();
+				} catch (ClassNotFoundException e) {
+					e.printStackTrace();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				request.setAttribute("list", clist);
+				RequestDispatcher rd = request.getRequestDispatcher("welcome.jsp");
+				rd.forward(request, response);
+			} else {
+				response.sendError(401, "User name or password is incorrect");
+			}
+		}
+		if("register_form".equalsIgnoreCase(request.getParameter("register"))){
+			String userName = request.getParameter("name");
+			String userPassword = request.getParameter("password");
 			try {
-				ResultSet rs = ExecuteQuery.query();
-				while (rs.next()) {
-					Car c = new Car();
-					c.setName(rs.getString(1));
-					c.setMake(rs.getString(2));
-					c.setMake_year(rs.getString(3));
-					c.setType(rs.getString(4));
-					c.setColor(rs.getString(5));
-					c.setPrice(rs.getInt(6));
-					carList.add(c);
+				if(DbService.insertNewUser(userName, userPassword)){
+					response.sendRedirect("index.html");
 				}
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			request.setAttribute("list", carList);
-			session.setAttribute("clist", carList);
-			RequestDispatcher rd=request.getRequestDispatcher("welcome.jsp");
-			rd.forward(request, response);
-		}else{
-			response.sendError(401, "User name or password is incorrect");
 		}
 	}
 
