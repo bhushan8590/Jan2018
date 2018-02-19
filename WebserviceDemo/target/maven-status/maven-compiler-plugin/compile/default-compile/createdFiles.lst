@@ -1,0 +1,5 @@
+com\webservicedemo\dao\CardDAOImpl.class
+com\webservicedemo\service\CardService.class
+com\webservicedemo\dao\DbUtility.class
+com\webservicedemo\dao\CardDAO.class
+com\webservicedemo\model\Card.class
